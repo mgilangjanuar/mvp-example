@@ -1,13 +1,13 @@
 package com.mgilangjanuar.dev.mvpexample.module.dashboard.view.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mgilangjanuar.dev.mvpexample.R;
 import com.mgilangjanuar.dev.mvpexample.module.dashboard.model.MessageResponseModel;
+import com.mgilangjanuar.dev.mvpexample.util.InflaterViewAdapterHelper;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_dashboard_message, parent, false));
+        return new ViewHolder(InflaterViewAdapterHelper.inflate(R.layout.layout_dashboard_message, parent));
     }
 
     @Override
