@@ -27,7 +27,7 @@ public class DashboardActivity extends BaseActivity implements DashboardPresente
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupRecyclerView(list, false);
-        presenter.retrieveDataMessages();
+        presenter.retrieveMessages();
     }
 
     @Override

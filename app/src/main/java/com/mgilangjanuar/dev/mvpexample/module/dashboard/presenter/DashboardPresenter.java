@@ -23,8 +23,8 @@ public class DashboardPresenter {
         this.listener = listener;
     }
 
-    public void retrieveDataMessages() {
-        ExampleApi.create().getData().enqueue(new Callback<MessageResponseModel>() {
+    public void retrieveMessages() {
+        new ExampleApi().create().getData().enqueue(new Callback<MessageResponseModel>() {
             @Override
             public void onResponse(Call<MessageResponseModel> call, Response<MessageResponseModel> response) {
                 listener.onSuccess(new DashboardAdapter(response.body().data));
@@ -37,7 +37,7 @@ public class DashboardPresenter {
         });
     }
 
-    public static interface DashboardPresenterListener extends BaseResponseListener {
+    public interface DashboardPresenterListener extends BaseResponseListener {
         void onSuccess(DashboardAdapter adapter);
     }
 }
