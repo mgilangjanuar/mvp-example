@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.mgilangjanuar.dev.mvpexample.R;
 import com.mgilangjanuar.dev.mvpexample.base.BaseActivity;
+import com.mgilangjanuar.dev.mvpexample.module.dashboard.model.MessageResponseModel;
 import com.mgilangjanuar.dev.mvpexample.module.dashboard.presenter.DashboardPresenter;
 import com.mgilangjanuar.dev.mvpexample.module.dashboard.view.adapter.DashboardAdapter;
 
@@ -36,7 +37,7 @@ public class DashboardActivity extends BaseActivity implements DashboardPresente
     }
 
     @Override
-    public void onSuccess(DashboardAdapter adapter) {
-        list.setAdapter(adapter);
+    public void onSuccess(MessageResponseModel model) {
+        list.setAdapter(new DashboardAdapter(model.data));
     }
 }

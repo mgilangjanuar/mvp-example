@@ -2,8 +2,6 @@ package com.mgilangjanuar.dev.mvpexample.module.dashboard.presenter;
 
 import com.mgilangjanuar.dev.mvpexample.base.BaseResponseListener;
 import com.mgilangjanuar.dev.mvpexample.module.dashboard.model.MessageResponseModel;
-import com.mgilangjanuar.dev.mvpexample.module.dashboard.view.adapter.DashboardAdapter;
-import com.mgilangjanuar.dev.mvpexample.service.ExampleApi;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,10 +22,10 @@ public class DashboardPresenter {
     }
 
     public void retrieveMessages() {
-        new ExampleApi().create().getData().enqueue(new Callback<MessageResponseModel>() {
+        MessageResponseModel.retrieveData(new Callback<MessageResponseModel>() {
             @Override
             public void onResponse(Call<MessageResponseModel> call, Response<MessageResponseModel> response) {
-                listener.onSuccess(new DashboardAdapter(response.body().data));
+                listener.onSuccess(response.body());
             }
 
             @Override
@@ -38,6 +36,6 @@ public class DashboardPresenter {
     }
 
     public interface DashboardPresenterListener extends BaseResponseListener {
-        void onSuccess(DashboardAdapter adapter);
+        void onSuccess(MessageResponseModel model);
     }
 }
